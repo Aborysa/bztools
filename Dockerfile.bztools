@@ -1,6 +1,6 @@
 FROM abaez/luarocks
 MAINTAINER Mario
-RUN apk add --update make tar unzip zip python3 rsync gcc openssl-dev readline-dev curl libc-dev
+RUN apk add --update make tar unzip zip python3 rsync gcc openssl-dev readline-dev curl find libc-dev
 RUN luarocks install moonscript
 #python scripts
 ADD ./pytools /bztools
