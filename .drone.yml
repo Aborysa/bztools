@@ -1,11 +1,10 @@
 pipeline:
   docker-build:
     image: plugins/docker
-    username: ${DOCKER_USERNAME}
-    password: ${DOCKER_PASSWORD}
     repo: docker.studynator.me/bzone/bztools
     registry: docker.studynator.me
     dockerfile: Dockerfile.bztools
+    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
     debug: true
     tags: 
       - latest
