@@ -4,8 +4,7 @@ pipeline:
     repo: docker.studynator.me/bzone/bztools
     registry: docker.studynator.me
     dockerfile: Dockerfile.bztools
-    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
-    debug: true
+    secrets: [ docker_username, docker_password ]
     tags: 
       - latest
       - ${DRONE_TAG}
