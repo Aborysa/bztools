@@ -6,6 +6,7 @@ pipeline:
     repo: docker.studynator.me/bzone/bztools
     registry: docker.studynator.me
     dockerfile: Dockerfile.bztools
+    debug: true
     tags: 
       - latest
       - ${DRONE_TAG}
