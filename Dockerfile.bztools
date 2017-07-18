@@ -3,5 +3,5 @@ MAINTAINER Mario
 RUN apk add --update py-pip espeak make ffmpeg ffmpeg-dev tar unzip zip python3 rsync gcc openssl-dev readline-dev curl libc-dev
 RUN luarocks install moonscript
 #python scripts
-RUN pip install pydub
+RUN pip3 install pydub
 ADD ./pytools /bztools
