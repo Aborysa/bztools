@@ -1,0 +1,27 @@
+Bzn binary:
+Header:
+  Size: B6
+  Version: 0F-12 : 4
+  binary?: 27-2A : 4
+  msn_name: 31-40 
+
+Objects:
+  Starts with: 07 62 08 00
+  name: 8L
+
+
+txdi files:
+
+COMMAND ...
+
+
+voices.sett
+SET VOICE grig en-gb
+SET VOICE
+
+PARENT voices.sett
+VOICE grig allice
+START
+grig: Hello World; []
+george: Yo was up hom
+
