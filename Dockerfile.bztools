@@ -4,4 +4,4 @@ RUN apk add --update py-pip espeak make ffmpeg ffmpeg-dev tar unzip zip python3 
 RUN luarocks install moonscript
 #python scripts
 RUN pip install pydub
-ADD ./pytools /bztoolst
+ADD ./pytools /bztools
