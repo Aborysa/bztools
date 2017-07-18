@@ -63,7 +63,7 @@ for file in files:
     out_audio += AudioSegment.from_wav(i["file"])
     if(i["delay"] > 0):
       out_audio += AudioSegment.silent(duration=i["delay"])
-
+    os.remove(i["file"])
   out_audio.export("{}.wav".format(uext),format="wav")
   #except:
   #  print("Could not read file {}".format(file))
