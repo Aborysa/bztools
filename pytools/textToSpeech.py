@@ -43,7 +43,8 @@ def interpretFile(fileName,context={}):
           person, data = s
           segments = re.split("\[(\d+)\]",data)
           for i in range(0,len(segments),2):
-            cmds.append({"voice": context[person],"text": segments[i].strip(), "delay": int(segments[i+1]) if (i+1) < len(segments) else 0})
+            if(segments[i].strip()):
+              cmds.append({"voice": context[person],"text": segments[i].strip(), "delay": int(segments[i+1]) if (i+1) < len(segments) else 0})
   return cmds
 
 for file in files:
