@@ -1,6 +1,6 @@
 FROM abaez/luarocks
 MAINTAINER Mario
-RUN apk add --update py-pip espeak make ffmpeg libavcodec-extra-53 tar unzip zip python3 rsync gcc openssl-dev readline-dev curl find libc-dev
+RUN apk add --update py-pip espeak make ffmpeg libavcodec-extra-53 tar unzip zip python3 rsync gcc openssl-dev readline-dev curl libc-dev
 RUN luarocks install moonscript
 #python scripts
 RUN pip install pydub
