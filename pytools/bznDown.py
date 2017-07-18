@@ -1,6 +1,7 @@
 import re
 import argparse
 import utils
+import os
 
 parser = argparse.ArgumentParser(description='2XXX -> 1045')
 parser.add_argument('path',help='file or directory to operate on')
