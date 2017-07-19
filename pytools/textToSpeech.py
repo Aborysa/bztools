@@ -25,6 +25,7 @@ else:
 
 def interpretFile(fileName,context={}):
   cmds = []
+  dic = os.path.dirname(os.path.realpath(fileName))
   with open(fileName,'r') as f:
     content = f.read()
     parts = re.split("START",content)
@@ -32,7 +33,7 @@ def interpretFile(fileName,context={}):
     for line in meta.split("\n"):
       tokens = line.split(" ")
       if(tokens[0] == "PARENT"):
-        cmds = cmds + interpretFile(tokens[1],context)
+        cmds = cmds + interpretFile(dic + "/" + tokens[1],context)
       elif(tokens[0] == "VOICE"):
         context[tokens[1]] = tokens[2]
     if(len(parts) > 1):
