@@ -53,7 +53,7 @@ for file in files:
   #try:
   uext = file.lower().split(".")[0]
   cmds = interpretFile(file)
-  dic = os.path.dirname(os.path.realpath(fileName))
+  dic = os.path.dirname(os.path.realpath(file))
   print(dic,uext)
 
   fileIndex = 0
