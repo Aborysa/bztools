@@ -6,7 +6,7 @@ import glob
 import subprocess
 import re
 import os
-import utils
+from utils import is_binary_file
 from pydub import AudioSegment
 parser = argparse.ArgumentParser(description='TXT -> WAV')
 parser.add_argument('path',help='file or directory to operate on')

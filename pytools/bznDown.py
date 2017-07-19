@@ -1,6 +1,6 @@
 import re
 import argparse
-import utils
+from utils import is_binary_file
 import os
 
 parser = argparse.ArgumentParser(description='2XXX -> 1045')

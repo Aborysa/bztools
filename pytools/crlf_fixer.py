@@ -6,7 +6,7 @@ import argparse
 import re
 import glob
 import os
-import utils
+from utils import is_binary_file
 
 parser = argparse.ArgumentParser(description='LF -> CRLF')
 parser.add_argument('path',help='file or directory to operate on')
