@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 
 def say(text,speed=175,voice="en",out="tmp.wav"):
-  subprocess.call('espeak {} -v {} -s {} -w {}'.format(text,voice,speed,out),shell=True)
+  subprocess.call('espeak "{}" -v {} -s {} -w {}'.format(text,voice,speed,out),shell=True)
 
 if(os.path.isfile(args.path)):
   files = [args.path]
