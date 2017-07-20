@@ -4,4 +4,5 @@ RUN apk add --update py-pip espeak make ffmpeg ffmpeg-dev tar unzip zip python3 
 RUN luarocks install moonscript
 #python scripts
 RUN pip3 install pydub
+RUN pip3 install gTTS
 ADD ./pytools /bztools
