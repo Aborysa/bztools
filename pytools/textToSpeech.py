@@ -50,21 +50,21 @@ def interpretFile(fileName,context={}):
   return cmds
 
 for file in files:
-  #try:
-  uext = os.path.realpath(file).lower().split(".")[0]
-  cmds = interpretFile(file)
-  fileIndex = 0
-  for i in cmds:
-    i["file"] = "tmp_voice_{}.wav".format(fileIndex)
-    say(i["text"],175,i["voice"],i["file"])
-    fileIndex += 1
-  
-  out_audio = AudioSegment.empty()
-  for i in cmds:
-    out_audio += AudioSegment.from_wav(i["file"])
-    if(i["delay"] > 0):
-      out_audio += AudioSegment.silent(duration=i["delay"])
-    os.remove(i["file"])
-  out_audio.export("{}.wav".format(uext),format="wav")
-  #except:
-  #  print("Could not read file {}".format(file))
+  try:
+    uext = os.path.realpath(file).lower().split(".")[0]
+    cmds = interpretFile(file)
+    fileIndex = 0
+    for i in cmds:
+      i["file"] = "tmp_voice_{}.wav".format(fileIndex)
+      say(i["text"],175,i["voice"],i["file"])
+      fileIndex += 1
+    
+    out_audio = AudioSegment.empty()
+    for i in cmds:
+      out_audio += AudioSegment.from_wav(i["file"])
+      if(i["delay"] > 0):
+        out_audio += AudioSegment.silent(duration=i["delay"])
+      os.remove(i["file"])
+    out_audio.export("{}.wav".format(uext),format="wav")
+  except:
+    print("Failed to generate audio for {}".format(file))
