@@ -24,10 +24,10 @@ def googleSay(text,lang="en",out="tmp.wav"):
   tts.save(out)
   return "mp3"
 
-def say(voice_d,text,out="tmp.wav",speed):
+def say(voice_d,text,out,speed):
   if(voice_d[0] == "GOOGLE"):
     return googleSay(text,voice_d[1],out)
-  else
+  else:
     return espeakSay(text,voice_d[1],out)
 
 if(os.path.isfile(args.path)):
