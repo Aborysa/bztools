@@ -24,7 +24,8 @@ def googleSay(text,lang="en",out="tmp.wav"):
   tts.save(out)
   return "mp3"
 
-def say(voice_d,text,out,speed):
+def say(voice_d,text,out):
+  print("Generating audio using {}: {}".format(voice_d[0],out))
   if(voice_d[0] == "GOOGLE"):
     return googleSay(text,voice_d[1],out)
   else:
