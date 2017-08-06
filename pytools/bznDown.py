@@ -1,5 +1,6 @@
 import re
 import argparse
+import codecs
 from utils import is_binary_file
 import os
 
@@ -29,14 +30,14 @@ else:
 
 for file in files:
     try:
-        with open(file,"r") as f:
+        with codecs.open(file,"r",encoding='utf-8') as f:
             content = f.read()
             content = re.sub(V_NUM,DOWNGRADE_TO,content)
             for i, v in PURGE_MAP.items():
                 content = re.sub(ARR_PFIX.format(i),v,content)
                 content = re.sub(V_PFIX.format(i),v,content)
 
-        with open(args.out or args.file,"w",newline="\r\n") as f:
+        with codecs.open(args.out or args.file,"w",newline="\r\n",encoding='utf-8') as f:
             f.write(content)
     except:
         print("Failed to downgrade bzn {}".format(file))
