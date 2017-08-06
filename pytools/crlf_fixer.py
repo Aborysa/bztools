@@ -23,5 +23,5 @@ for file in files:
       content = f.read()
     with open(file,'w',newline='\r\n') as f:
       f.write(content)
-  except:
-    print("Could not read or convert file {}".format(file))
+  except Exception as e:
+    print("Could not read or convert file {}\n{}".format(file,e))
