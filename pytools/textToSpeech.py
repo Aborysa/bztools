@@ -10,11 +10,6 @@ from utils import is_binary_file
 from pydub import AudioSegment
 from gtts import gTTS
 
-parser = argparse.ArgumentParser(description='TXT -> WAV')
-parser.add_argument('path',help='file or directory to operate on')
-
-args = parser.parse_args()
-
 def espeakSay(text,voice="en",out="tmp.wav",speed=175):
   subprocess.call('espeak "{}" -v {} -s {} -w {}'.format(text,voice,speed,out),shell=True)
   return "wav"
@@ -24,12 +19,20 @@ def googleSay(text,lang="en",out="tmp.wav"):
   tts.save(out)
   return "mp3"
 
+
 def say(voice_d,text,out):
   print("Generating audio using {}: {}".format(voice_d[0],out))
   if(voice_d[0] == "GOOGLE"):
     return googleSay(text,voice_d[1],out)
   else:
     return espeakSay(text,voice_d[1],out)
+
+
+parser = argparse.ArgumentParser(description='TXT -> WAV')
+parser.add_argument('path',help='file or directory to operate on')
+
+args = parser.parse_args()
+
 
 if(os.path.isfile(args.path)):
   files = [args.path]
@@ -49,7 +52,6 @@ def interpretFile(fileName,context={}):
       if(tokens[0] == "PARENT"):
         cmds = cmds + interpretFile(dic + "/" + tokens[1],context)
       elif(tokens[0] == "VOICE"):
-        
         context[tokens[1]] = tokens[2:]
     if(len(parts) > 1):
       body = parts[1].replace("\n","")
@@ -76,7 +78,7 @@ for file in files:
     
     out_audio = AudioSegment.empty()
     for i in cmds:
-      out_audio += AudioSegment.from_file(i["file"],format=i["format"])
+      out_audio += AudioSegment.from_file(i["file"],i["format"])
       if(i["delay"] > 0):
         out_audio += AudioSegment.silent(duration=i["delay"])
       os.remove(i["file"])
