@@ -3,6 +3,7 @@
 
 import mimetypes
 import argparse
+import codecs
 import re
 import glob
 import os
@@ -19,9 +20,9 @@ else:
 
 for file in files:
   try:
-    with open(file,'r') as f:
+    with codecs.open(file,'r',encoding='utf-8') as f:
       content = f.read()
-    with open(file,'w',newline='\r\n') as f:
+    with codecs.open(file,'w',newline='\r\n',encoding='utf-8') as f:
       f.write(content)
   except Exception as e:
     print("Could not read or convert file {}\n{}".format(file,e))
