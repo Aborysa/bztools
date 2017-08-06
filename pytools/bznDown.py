@@ -37,7 +37,7 @@ for file in files:
                 content = re.sub(ARR_PFIX.format(i),v,content)
                 content = re.sub(V_PFIX.format(i),v,content)
 
-        with codecs.open(args.out or args.file,"w",newline="\r\n",encoding='utf-8') as f:
+        with open(args.out or args.file,"w") as f:
             f.write(content)
     except:
         print("Failed to downgrade bzn {}".format(file))

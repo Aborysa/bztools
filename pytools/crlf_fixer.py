@@ -22,7 +22,7 @@ for file in files:
   try:
     with codecs.open(file,'r',encoding='utf-8') as f:
       content = f.read()
-    with codecs.open(file,'w',newline='\r\n',encoding='utf-8') as f:
+    with open(file,'w',newline='\r\n') as f:
       f.write(content)
   except Exception as e:
     print("Could not read or convert file {}\n{}".format(file,e))
