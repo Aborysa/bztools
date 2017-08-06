@@ -39,4 +39,4 @@ for file in files:
         with open(args.out or args.file,"w",newline="\r\n") as f:
             f.write(content)
     except:
-        print("Failed to convert {}".format(args.file))
+        print("Failed to downgrade bzn {}".format(file))
