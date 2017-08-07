@@ -69,6 +69,8 @@ def interpretFile(fileName,context={}):
 for file in files:
   try:
     uext = os.path.realpath(file).lower().split(".")[0]
+    if(os.path.isfile("{}.wav".format(uext))):
+      continue
     cmds = interpretFile(file)
     fileIndex = 0
     for i in cmds:
