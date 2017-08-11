@@ -10,18 +10,18 @@ Objects:
   name: 8L
 
 
-txdi files:
 
-COMMAND ...
+Txdi files
 
+Commands:
+PARENT parent.file # includes a parent txdi file
+VOICE CHARACTER ENGINE VOICE_NAME # set a character's voice to a specific voice using a specific engine i.e:
+1. VOICE JACK GOOGLE en-uk # set's JACK's voice to use the GOOGLE engine with the en-uk voice
+2. VOICE THOR ESPEAK en # set's THOR's voice to use ESPEAK engine with the en voice
+START # tells the interpreter that everything that comes after is dialog i.e:
+  START
+  JACK: Hello Thor [100] what is up[200];
+  THOR: Doing fine [100] just got a new job[200];
 
-voices.sett
-SET VOICE grig en-gb
-SET VOICE
-
-PARENT voices.sett
-VOICE grig allice
-START
-grig: Hello World; []
-george: Yo was up hom
-
+[XXXXms] - represents a pause of XXXX milliseconds
+; - used to end a character's line
