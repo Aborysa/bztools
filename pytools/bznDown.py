@@ -5,7 +5,7 @@ import os
 
 parser = argparse.ArgumentParser(description='2XXX -> 1045')
 parser.add_argument('path',help='file or directory to operate on')
-parser.add_argument('out',help='Output file')
+parser.add_argument('out',help='Output file or directory')
 
 
 args = parser.parse_args()
