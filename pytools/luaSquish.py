@@ -31,7 +31,7 @@ for file in files:
     uext = file.split(".")[0]
     subprocess.call("make_squishy {}".format(file))
     os.rename("squishy.new", "squishy")
-     with open("squishy","a") as f:
+    with open("squishy","a") as f:
       f.write("\nOutput \"{}.squished\"\n".format(file, uext))
       squished.append("{}.squished".format(uext))
     subprocess.call("squish")
