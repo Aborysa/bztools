@@ -32,9 +32,9 @@ for file in files:
     subprocess.call("make_squishy {}".format(file),shell=True)
     os.rename("squishy.new", "squishy")
     with open("squishy","a") as f:
-      f.write("\nOutput \"{}.squished\"\n".format(file, uext))
+      f.write("\nOutput \"{}.squished\"\n".format(uext))
       squished.append("{}.squished".format(uext))
-    subprocess.call("squish")
+    subprocess.call("squish --no-minify",shell=True)
   except Exception as e:
     print("Could not squish file {}\n{}".format(file,e))
 
