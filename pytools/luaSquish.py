@@ -10,7 +10,7 @@ import os
 
 parser = argparse.ArgumentParser(description='LF -> CRLF')
 parser.add_argument('path',help='directory to operate on')
-
+parser.add_argument('-r', action='store_true')
 
 
 args = parser.parse_args()
@@ -29,21 +29,22 @@ squished = []
 for file in files:
   try:
     uext = file.split(".")[0]
-    subprocess.call("make_squishy {}".format(file))
+    subprocess.call("make_squishy {}".format(file),shell=True)
     os.rename("squishy.new", "squishy")
     with open("squishy","a") as f:
       f.write("\nOutput \"{}.squished\"\n".format(file, uext))
       squished.append("{}.squished".format(uext))
     subprocess.call("squish")
   except Exception as e:
-    print("Could not squish file {}\n{}".format(f,e))
+    print("Could not squish file {}\n{}".format(file,e))
 
 
 # Clean up, remove all lua files
-for file in glob.glob("*.lua"):
-  if os.path.exists(file):
-    os.remove(file)
+if(args.r):
+  for file in glob.glob("*.lua"):
+    if os.path.exists(file):
+      os.remove(file)
 
-for file in squished:
-  uext = file.split(".")[0]
-  os.rename(file,"{}.lua".format(uext))
+  for file in squished:
+    uext = file.split(".")[0]
+    os.rename(file,"{}.lua".format(uext))
