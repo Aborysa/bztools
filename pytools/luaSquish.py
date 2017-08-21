@@ -29,8 +29,10 @@ squished = []
 for file in files:
   try:
     uext = file.split(".")[0]
-    with open("squishy","w") as f:
-      f.write("Main \"{}\"\nOutput \"{}.squished\"".format(file, uext))
+    subprocess.call("make_squishy {}".format(file))
+    os.rename("squishy.new", "squishy")
+     with open("squishy","a") as f:
+      f.write("\nMain \"{}\"\nOutput \"{}.squished\"\n".format(file, uext))
       squished.append("{}.squished".format(uext))
     subprocess.call("squish")
   except Exception as e:
