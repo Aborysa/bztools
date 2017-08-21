@@ -32,7 +32,7 @@ for file in files:
     subprocess.call("make_squishy {}".format(file))
     os.rename("squishy.new", "squishy")
      with open("squishy","a") as f:
-      f.write("\nMain \"{}\"\nOutput \"{}.squished\"\n".format(file, uext))
+      f.write("\nOutput \"{}.squished\"\n".format(file, uext))
       squished.append("{}.squished".format(uext))
     subprocess.call("squish")
   except Exception as e:

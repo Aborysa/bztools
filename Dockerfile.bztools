@@ -67,5 +67,9 @@ RUN tar xzf squish-0.2.0.tar.gz && \
     mv squish-0.2.0 /tmp/squish && \
     rm squish-0.2.0.tar.gz
 
+RUN mv /tmp/squish/make_squishy /usr/local/bin/squish
 WORKDIR /tmp/squish
 RUN make && make install
+
+
+WORKDIR /
