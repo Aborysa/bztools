@@ -19,9 +19,10 @@ else:
 
 for file in files:
   try:
-    with open(file,'r',encoding='utf-8') as f:
+    with open(file,'rb') as f:
       content = f.read()
-    with open(file,'w',newline='\r\n',encoding='utf-8') as f:
+      content = content.replace(b'\r\n',b'\n').replace(b'\n',b'\r\n')
+    with open(file,'wb') as f:
       f.write(content)
   except Exception as e:
     print("Could not read or convert file {}\n{}".format(file,e))
