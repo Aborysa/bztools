@@ -1,8 +1,8 @@
 pipeline:
   docker-build:
     image: plugins/docker
-    repo: docker.studynator.me/bzone/bztools
-    registry: docker.studynator.me
+    repo: docker.faavne.no/bzone/bztools
+    registry: docker.faavne.no
     dockerfile: Dockerfile.bztools
     secrets: [ docker_username, docker_password ]
     tags: 
