@@ -59,6 +59,7 @@ RUN luarocks install moonscript
 #python scripts
 RUN pip3 install pydub
 RUN pip3 install gTTS
+RUN pip3 install PIL
 ADD ./pytools /bztools
 
 # squish
