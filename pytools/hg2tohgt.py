@@ -3,9 +3,9 @@ import argparse
 import os
 import glob
 import struct
-from terrainUtils import HeightMap
+from terrainUtils import HeightMap, Avg, AvgEdge
 from PIL import Image
-parser = argparse.ArgumentParser(description='2XXX -> 1045')
+parser = argparse.ArgumentParser(description='Converts between hg2, hgt and images')
 parser.add_argument('path',help='file or directory to operate on')
 #parser.add_argument('out',help='Output file or directory')
 
@@ -27,11 +27,11 @@ for file in files:
       f_v, res, x_b, z_b, f_r, _ = struct.unpack("<HHHHHH",content[:0xC]) 
       data = content[0xC:]
       w, h = x_b*2**res, z_b*2**res
-      h_data,_, m = HeightMap._parse_data(data,res,w)
-      img = Image.new("L",(w,h))
-      img.putdata([n/m * 0xFF for n in h_data])
-      img.thumbnail((w/2,h/2), Image.ANTIALIAS)
-      s_data = HeightMap._serialize_data([int(n/0xFF * m) for n in img.getdata()],7,w/2)
+      h_data = HeightMap.from_data(data,res,w)
+      
+      m = h_data.getMax()
+      h_data2 = h_data.getResized(w/2,h/2,Avg)
+      s_data = h_data2.serialize(7)
     with open("{}.hgt".format(uext),"wb") as f:
       f.write(s_data)
 
