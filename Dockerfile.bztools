@@ -8,7 +8,7 @@ ENV LUA_VERSION ${LUA_MAJOR_VERSION}.${LUA_MINOR_VERSION}
 # Dependencies
 
 RUN apt-get update 
-RUN apt-get install -y steamcmd python3-pip python3 espeak lib32ncurses5-dev libavcodec-dev ffmpeg zip make tar unzip gcc rsync libssl-dev libreadline-dev curl libc-dev build-essential
+RUN apt-get install -y lib32gcc1 python3-pip python3 espeak lib32ncurses5-dev libavcodec-dev ffmpeg zip make tar unzip gcc rsync libssl-dev libreadline-dev curl libc-dev build-essential
 
 RUN curl -L http://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz | tar xzf -
 WORKDIR /lua-$LUA_VERSION
@@ -55,6 +55,7 @@ WORKDIR /
 
 RUN rm $TMP_LOC -rf
 
+
 RUN luarocks install moonscript
 #python scripts
 RUN pip3 install pydub
@@ -73,5 +74,10 @@ RUN mv /tmp/squish/make_squishy /usr/local/bin
 WORKDIR /tmp/squish
 RUN make && make install
 
-
+RUN mkdir /root/Steam
+WORKDIR /root/Steam
+RUN cd /root/Steam
+RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+RUN mv /root/Steam/steamcmd.sh /root/Steam/steamcmd
+ENV PATH="/root/Steam:${PATH}"
 WORKDIR /
