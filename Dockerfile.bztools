@@ -60,6 +60,7 @@ RUN luarocks install moonscript
 RUN pip3 install pydub
 RUN pip3 install gTTS
 RUN pip3 install Pillow
+RUN pip3 install vdf
 ADD ./pytools /bztools
 
 # squish
