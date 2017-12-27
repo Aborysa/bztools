@@ -12,7 +12,9 @@ parser.add_argument('hook',help='discord webhook')
 parser.add_argument('-kv',help='Key Value pairs',nargs='+',type=str)
 
 
-
+class SafeDict(dict):
+  def __missing__(self, key):
+    return '{' + key + '}'
 
 args = parser.parse_args()
 file = args.template
@@ -34,7 +36,7 @@ while cursorQueue:
   cursor = cursorQueue.pop()
   for k, v in (cursor.items() if type(cursor) == dict else enumerate(cursor)):
     if type(v) == str:
-      cursor[k] = v.format(**kvdic)
+      cursor[k] = v.format_map(SafeDict(**kvdic))
     elif type(v) == dict or type(v) == list:
       cursorQueue.append(v)
 
