@@ -4,10 +4,11 @@ pipeline:
     repo: docker.faavne.no/bzone/bztools
     registry: docker.faavne.no
     dockerfile: Dockerfile.bztools
-    secrets: [ docker_username, docker_password ]
+    secrets: [ docker_username, docker_password, steam_user, steam_pass ]
     tags: 
       - latest
       - ${DRONE_TAG}
     when:
       event:
         - tag
+
