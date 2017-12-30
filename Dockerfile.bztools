@@ -81,3 +81,4 @@ RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.t
 RUN mv /root/Steam/steamcmd.sh /root/Steam/steamcmd
 ENV PATH="/root/Steam:${PATH}"
 WORKDIR /
+RUN steamcmd +login $STEAM_USER $STEAM_PASS $STEAM_GUARD +quit
