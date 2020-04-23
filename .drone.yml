@@ -1,10 +1,10 @@
 pipeline:
   docker-build:
     image: plugins/docker
-    repo: docker.faavne.no/bzone/bztools
-    registry: docker.faavne.no
+    repo: docker.dock1.spaceway.network/bzone/bztools
+    registry: docker.dock1.spaceway.network
     dockerfile: Dockerfile.bztools
-    secrets: [ docker_username, docker_password ]
+    #secrets: [ docker_username, docker_password ]
     tags: 
       - latest
       - ${DRONE_TAG}
