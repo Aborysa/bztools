@@ -3,7 +3,7 @@ pipeline:
     image: plugins/docker
     repo: docker.dock1.spaceway.network/bzone/bztools
     registry: docker.dock1.spaceway.network
-    dockerfile: Dockerfile.bztools
+    dockerfile: Dockerfile
     #secrets: [ docker_username, docker_password ]
     tags: 
       - latest
