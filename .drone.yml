@@ -1,13 +1,22 @@
-pipeline:
-  docker-build:
-    image: plugins/docker
-    repo: docker.dock1.spaceway.network/bzone/bztools
-    registry: docker.dock1.spaceway.network
-    dockerfile: Dockerfile
-    #secrets: [ docker_username, docker_password ]
+kind: pipeline
+name: default
+
+steps:
+- name: docker-build
+  image: plugins/docker
+  settings:
+    repo: thejanne/bztools
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    auth:
+      from_secret: docker_password
     tags: 
       - latest
       - ${DRONE_TAG}
-    when:
-      event:
-        - tag
+  when:
+    branch:
+    - master
+    event:
+    - tag
